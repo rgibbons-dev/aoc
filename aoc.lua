@@ -12,7 +12,7 @@
 
 function split(file)
 	local lines = {}
-	for line in file.gmatch("[^\\n]") do
+	for line in file:gmatch"[^\n]+" do
 		table.insert(lines, line)
 	end
 	return lines
@@ -38,13 +38,28 @@ end
 -- 23 BEGIN
 
 function _23011()
-	local contents = parse("./2023/one/input", false)
-	print(contents)
+	local contents = parse("./2023/one/input", true)
+	local sum = 0
+	for i, line in pairs(contents) do
+		local nochars = ""
+		for char in line:gmatch"." do
+			local ascii = string.byte(char)
+			if ascii < 58 and ascii > 47 then
+				nochars = nochars .. char
+			end
+		end
+		local first = string.sub(nochars,1,1)
+		local nl = #nochars
+		local second = string.sub(nochars,nl,nl)
+		local calibrated = first .. second
+		sum = sum + tonumber(calibrated)
+	end
+	print(sum)
 end
 -- 23 END
 
 -- MAIN BEGIN
 
-
+_23011()
 
 -- MAIN END
