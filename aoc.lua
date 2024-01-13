@@ -56,10 +56,54 @@ function _23011()
 	end
 	print(sum)
 end
+
+function l2n(s)
+	-- compounds
+	s = string.gsub(s, "oneight", "18")
+	s = string.gsub(s, "nineight", "98")
+	s = string.gsub(s, "eighthree", "83")
+	s = string.gsub(s, "sevenine", "79")
+	s = string.gsub(s, "eightwo", "82")
+	s = string.gsub(s, "twone", "21")
+	s = string.gsub(s, "fiveight", "58")
+	-- singles
+	s = string.gsub(s, "one", "1")
+	s = string.gsub(s, "two", "2")
+	s = string.gsub(s, "three", "3")
+	s = string.gsub(s, "four", "4")
+	s = string.gsub(s, "five", "5")
+	s = string.gsub(s, "six", "6")
+	s = string.gsub(s, "seven", "7")
+	s = string.gsub(s, "eight", "8")
+	s = string.gsub(s, "nine", "9")
+	return s
+end
+
+function _23012()
+	local contents = parse("./2023/one/input", false)
+	local noly = l2n(contents)
+	local nonl = split(noly)
+	local sum = 0
+	for i, line in pairs(nonl) do
+		local nochars = ""
+		for char in line:gmatch"." do
+			local ascii = string.byte(char)
+			if ascii < 58 and ascii > 47 then
+				nochars = nochars .. char
+			end
+		end
+		local first = string.sub(nochars,1,1)
+		local nl = #nochars
+		local second = string.sub(nochars,nl,nl)
+		local calibrated = first .. second
+		sum = sum + tonumber(calibrated)
+	end
+	print(sum)
+end
 -- 23 END
 
 -- MAIN BEGIN
 
-_23011()
+_23012()
 
 -- MAIN END
