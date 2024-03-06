@@ -1,8 +1,12 @@
 # advent of code solutions
 
-everything is in aoc.lua
+**Warning**
+work on this project has been suspended. i'd like to spend time completing these puzzles, but i'm choosing to spend my time in other ways. i also bought neetcode pro (stupidly), so my attention for this sort of problem will go there.
 
-* inputs -> yyyy/num/input
-* notes -> yyyy/num/note.md
+folder structure:
 
-(or read my thoughts as a [webpage](https://rgibbons-dev.github.io/aoc))
+* yyyy/
+    * yyyy.ipynb
+    * inputs/
+        * one
+        * ...
